@@ -1,0 +1,33 @@
+{% extends 'base.html' %}  <!it connect to the base html and this html for use block content>
+{% load static %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'blog/style.css' %}">
+{% endblock %}
+
+{% block content %} <! with block content we add this file codes to the base html file between bloc content tags>
+<! like copy these codes to the base html file ' s (blogapp/templtes/base.html) body tags part (between block content part and end block)>
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-3">
+            {% include 'partials/_categories.html' %}
+        </div>
+
+        <div class="col-9">
+            <h1>Blogs</h1>
+            <hr>
+            {% if blogs|length > 0 %}
+                {% for blog in blogs %}
+                    {% include 'blog/partials/_block.html' %}
+                {% endfor %}            
+            
+
+            {% else %}
+                <div class = "alert alert-warning"> No Blogs </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

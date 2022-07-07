@@ -1,0 +1,34 @@
+<nav class = "navbar navbar-dark bg-primary navbar-expand-lg">
+    <div class = "container">
+        <a class = "navbar-brand" href="{% url 'home' %}"> Blogapp </a>
+        <ul class = "navbar-nav me-auto"> <! margin end auto = for left side> 
+            <li class = "nav-item"> 
+                <a class = "nav-link"  href="{% url 'blogs' %}"> Blogs </a>
+            </li>
+
+            <li class = "nav-item"> 
+                <a class = "nav-link"  href="{% url 'home' %}"> Home </a>
+            </li>
+        </ul>
+        <ul class = "navbar-nav ms-auto"> <! margin start auto = for right side> 
+            {% if user.is_authenticated %} <! user.is_authenticated come from request in views>
+                <li class = "nav-item"> 
+                    <a class = "nav-link"  href="{% url 'logout' %}"> Log Out </a>
+                </li>
+
+                <li class = "nav-item"> 
+                    <a class = "nav-link"  href=""> Welcome, {{ user.username|title }} </a>
+                </li>
+
+            {% else %}
+                <li class = "nav-item"> 
+                    <a class = "nav-link"  href="{% url 'login' %}"> Login </a>
+                </li>
+
+                <li class = "nav-item"> 
+                    <a class = "nav-link"  href="{% url 'register' %}"> Register </a>
+                </li>                
+            {% endif %}
+        </ul>
+    </div>
+</nav>
